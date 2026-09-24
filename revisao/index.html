@@ -2,11 +2,16 @@
 <html lang="pt-br">
 
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Bootstrap Class - Geração Tech 4.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chiron+Sung+HK:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         /* Toggle do tema fixado no canto inferior direito */
         #themeToggle {
@@ -14,40 +19,105 @@
             bottom: 20px;
             right: 15px;
             z-index: 1000;
+            width: 62px;
+            height: 62px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            box-shadow: none;
+        }
+
+        #themeToggle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+        }
+
+        [data-bs-theme="dark"] #themeToggle img {
+            background: transparent;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        #themeBubble {
+            position: absolute;
+            bottom: 64px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            color: #111;
+            font-size: 15px;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+            white-space: nowrap;
+            line-height: 1.2;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        #themeBubble::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -6px;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.85);
+            rotate: 45deg;
+        }
+
+        h1 {
+            font-family: "Chiron Sung HK";
         }
     </style>
 </head>
 
 <body>
     <div>
-        <h1>Meu Dashboard</h1>
-        <p>Gerencie suas informações</p>
-        <div>Você possui novas notificações</div>
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <h5>Perfil</h5>
-                        <p>Gerencie seus dados pessoais</p>
-                        <button>Acessar</button>
+        <h1><i class="fa-notdog fa-solid fa-gauge"></i>
+            Meu dashboard</h1>
+        <p class="lead">Gerencie suas informações</p>
+        <div class="alert alert-info">Você possui novas notificações</div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Perfil</h5>
+                        <p class="card-text">Gerencie seus dados pessoais</p>
+                        <button class="btn btn-primary">
+                        <i class="fas fa-user"></i>    
+                            Acessar</button>
                     </div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <div>
-                        <h5>Relatórios</h5>
-                        <p>Consulte seus resultados</p>
-                        <button>Visualizar</button>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Relatórios</h5>
+                        <p class="card-text">Consulte seus resultados</p>
+                        <button class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i>    
+                            Visualizar</button>
                     </div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <div>
-                        <h5>Configurações</h5>
-                        <p>Personalize sua conta</p>
-                        <button>Configurar</button>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Configurações</h5>
+                        <p class="card-text">Personalize sua conta</p>
+                        <button class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i>    
+                            Configurar</button>
                     </div>
                 </div>
             </div>
@@ -128,43 +198,48 @@
 
     <button 
         id="themeToggle" 
-        class="btn btn-outline-success ms-2" 
-        type="button">
+        class="btn ms-2" 
+        type="button" 
+        aria-label="Alternar tema">
+        <span id="themeBubble">hi</span>
+        <img id="themeIcon" src="https://toppng.com/uploads/preview/sleeping-pikachu-wallpaper-5609-hd-wallpapers-in-games-sleeping-pikachu-11562976561zrhbeb3qhe.png" alt="Ícone do tema">
     </button>
 
     <script>
         const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
+        const themeBubble = document.getElementById("themeBubble");
 
-        // Verifica se existe um tema salvo
+        const darkImage = "https://toppng.com/uploads/preview/sleeping-pikachu-wallpaper-5609-hd-wallpapers-in-games-sleeping-pikachu-11562976561zrhbeb3qhe.png";
+        const lightImage = "https://i.pinimg.com/736x/5f/e8/fb/5fe8fb171dd647e801177a056b510c53.jpg";
+
         let theme = localStorage.getItem("theme");
 
-        // Se não existir, usa o tema preferido como claro
         if (!theme) {
             theme = window.matchMedia("(prefers-color-scheme: light)").matches
-                ? "dark"
-                : "light";
+                ? "light"
+                : "dark";
         }
 
-        // Função para aplicar o tema
         function applyTheme() {
             document.documentElement.setAttribute("data-bs-theme", theme);
 
             if (theme === "dark") {
-                themeToggle.textContent = "🌙";
+                themeIcon.src = darkImage;
+                themeIcon.alt = "Tema escuro";
+                themeBubble.textContent = "zzzz";
             } else {
-                themeToggle.textContent = "☀️";
+                themeIcon.src = lightImage;
+                themeIcon.alt = "Tema claro";
+                themeBubble.textContent = "hi";
             }
         }
 
-        // Aplica o tema ao abrir a página
         applyTheme();
 
-        // Troca o tema ao clicar
         themeToggle.addEventListener("click", () => {
             theme = theme === "light" ? "dark" : "light";
-
             localStorage.setItem("theme", theme);
-
             applyTheme();
         });
     </script>
